@@ -23,7 +23,7 @@ function Home() {
     const handleSubmit = (event) =>{
         console.log(Ename,Eid,Edept,Edob,Egender,Edesign,Esalary);
         event.preventDefault();
-        axios.post('http://localhost:8081/',{Ename,Eid,Edept,Edob,Egender,Edesign,Esalary})
+        axios.post('https://employee-6nfb.onrender.com/',{Ename,Eid,Edept,Edob,Egender,Edesign,Esalary})
         .then(res =>{
             navigate('/');
         
@@ -33,13 +33,13 @@ function Home() {
 
     
     useEffect(()=>{
-        axios.get('http://localhost:8081/')
+        axios.get('https://employee-6nfb.onrender.com/')
         .then(res => setData(res.data))
         .catch(err => console.log(err));
 
 })
     const handleDelete=(Eid)=>{
-        axios.delete('http://localhost:8081/'+Eid)
+        axios.delete('https://employee-6nfb.onrender.com/P'+Eid)
         .then(res => {navigate('/')})
         .catch(err => console.log(err));
     }
