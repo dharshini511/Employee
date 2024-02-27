@@ -196,6 +196,12 @@ button:hover {
   overflow-x: auto;
 }
 
+.search-button {
+  width: 80px; 
+  height: 30px; /* Adjust the height as needed */
+  margin-left: 5px; /* Adjust the margin as needed */
+}
+
 /* Table styles */
 .table {
   width: 70%;

@@ -21,8 +21,18 @@ function Home() {
 
 
     const handleSubmit = (event) =>{
+
         console.log(Ename,Eid,Edept,Edob,Egender,Edesign,Esalary);
         event.preventDefault();
+
+        if (new Date(Edob) >= Date.now()) {
+            alert("Employee DOB cannot be in the future");
+            return;
+        }
+        if( Esalary<0){
+            alert("salary cannot be negative");
+            return;
+        }
         axios.post('https://employee-6nfb.onrender.com/',{Ename,Eid,Edept,Edob,Egender,Edesign,Esalary})
         .then(res =>{
             navigate('/');
@@ -39,7 +49,7 @@ function Home() {
 
 })
     const handleDelete=(Eid)=>{
-        axios.delete('https://employee-6nfb.onrender.com/P'+Eid)
+        axios.delete('https://employee-6nfb.onrender.com/'+Eid)
         .then(res => {navigate('/')})
         .catch(err => console.log(err));
     }
@@ -104,14 +114,16 @@ function Home() {
                             <div classname='inputs'>
                                 <input type='text' placeholder='Salary:' maxLength={8} onChange={e => setEsalary(e.target.value)} required/>
                             </div>
-                        </div>
-
-
-                        <div>
+                        
                             <button >Submit</button>
                         </div>
                     </form>
                 </div>
+              
+
+
+
+             
         <div className='table-container'>
             <div className='main'>
                 <h1> Employee Details</h1>
